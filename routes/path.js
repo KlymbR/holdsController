@@ -7,16 +7,32 @@ var Path = require('../models/path')
 // get all paths
 router.get('', function (req, se) {
   Path.find({}, (err, res) => {
-    if (err) { return err }
-    se.send(res)
+    if (err) {
+      console.log(err)
+      se.status(500).send(err)
+      return err
+    }
+    if (!res) {
+      se.sendStatus(204)
+    } else {
+      se.send(res)
+    }
   })
 })
 
 // get a path with his id
 router.get('/path', function (req, se) {
   Path.findOne({path_id: req.query.id}, (err, res) => {
-    if (err) { return err }
-    se.send(res)
+    if (err) {
+      console.log(err)
+      se.status(500).send(err)
+      return err
+    }
+    if (!res) {
+      se.sendStatus(204)
+    } else {
+      se.send(res)
+    }
   })
 })
 
@@ -29,25 +45,26 @@ router.post('/path/free', function (req, se) {
       if (err) {
         console.log(err)
         se.status(500).send(err)
-      } else {
-        for (let i = 0; i !== res.grips.length; i++) {
-          if (req.body.path_free === true) {
-            res.grips[i].grip_on = false
-          } else {
-            res.grips[i].grip_on = true
-          }
-          Path.findOneAndUpdate({
-            path_id: req.body.path_id},
-            {'$set': {'grips': res.grips}})
-            .exec(function (err) {
-              if (err) {
-                console.log(err)
-                se.status(500).send(err)
-              }
-            })
-        }
-        se.sendStatus(200)
+        return err
       }
+      for (let i = 0; i !== res.grips.length; i++) {
+        if (req.body.path_free === true) {
+          res.grips[i].grip_on = false
+        } else {
+          res.grips[i].grip_on = true
+        }
+        Path.findOneAndUpdate({
+          path_id: req.body.path_id},
+          {'$set': {'grips': res.grips}})
+          .exec(function (err) {
+            if (err) {
+              console.log(err)
+              se.status(500).send(err)
+              return err
+            }
+          })
+      }
+      se.sendStatus(200)
     })
 })
 
@@ -61,6 +78,10 @@ router.get('/grip', function (req, se) {
       if (err) {
         console.log(err)
         se.status(500).send(err)
+        return err
+      }
+      if (!res) {
+        se.sendStatus(204)
       } else {
         se.send(res)
       }
@@ -76,9 +97,9 @@ router.post('/grip', function (req, se) {
       if (err) {
         console.log(err)
         se.status(500).send(err)
-      } else {
-        se.sendStatus(200)
+        return err
       }
+      se.sendStatus(200)
     })
 })
 
