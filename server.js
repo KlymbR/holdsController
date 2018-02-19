@@ -43,7 +43,9 @@ app.use(session({
   })
 }))
 
+// routes
 app.use('/', require('./routes/path'))
+app.use('/', require('./routes/grip'))
 
 // basic 404 handler
 app.use((req, res) => {
