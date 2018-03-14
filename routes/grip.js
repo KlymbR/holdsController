@@ -43,11 +43,29 @@ router.post('/grip', function (req, se) {
     })
 })
 
+// add a grip to an array
+/*router.post('/grip/add', function (req, se) {
+  Path.findOne(
+    {path_id: req.body.path_id})
+    .exec(function (err, res) {
+      if (err) {
+        console.log(err)
+        se.status(500).send(err)
+        return err
+      }
+      if (!res) {
+        se.sendStatus(204)
+      } else {
+        se.sendStatus(200)
+      }
+    })
+})*/
+
 // delete a grip
 router.post('/grip/delete', function (req, se) {
   Path.findOneAndUpdate(
     {path_id: req.body.path_id, 'grips.grip_id': req.body.grip_id},
-    {'$set': {'grips.$': null}})
+    {'$pull': {'grips': {"grip_id":req.body.grip_id}}})
     .exec(function (err, res) {
       if (err) {
         console.log(err)
