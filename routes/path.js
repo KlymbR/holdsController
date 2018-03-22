@@ -72,6 +72,33 @@ router.post('/path/free', function (req, se) {
     })
 })
 
+// add a new path
+router.post('/path/add', function (req, se) {
+  Path.findOne({
+    path_id: req.body.path_id
+  })
+    .exec(function (err, res) {
+      if (err) {
+        console.log(err)
+        se.status(500).send(err)
+        return err
+      }
+      if (res) {
+        se.sendStatus(400)
+      } else {
+        var pathId = req.body.path_id
+        var pathFree = req.body.path_free
+        var pathDifficulty = req.body.path_difficulty
+        if (pathId == null || (pathFree !== true && pathFree !== false) || pathDifficulty == null) {
+          se.sendStatus(400)
+        }
+        var newPath = new Path({path_id: pathId, path_free: pathFree, path_difficulty: pathDifficulty, grips: []}, { versionKey: false })
+        newPath.save()
+        se.sendStatus(200)
+      }
+    })
+})
+
 // delete a path
 router.post('/path/delete', function (req, se) {
   Path.findOne(
