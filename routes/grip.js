@@ -86,7 +86,7 @@ router.post('/grip/add', function (req, se) {
             } else {
               var gripData = req.body.grip_data
               var gripOn = req.body.grip_on
-              if (gripData == null || (gripOn !== true && gripOn !== false)) {
+              if (gripData === undefined || (gripOn !== true && gripOn !== false)) {
                 se.sendStatus(400)
               } else {
                 var grip = {

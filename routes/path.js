@@ -89,10 +89,24 @@ router.post('/path/add', function (req, se) {
         var pathId = req.body.path_id
         var pathFree = req.body.path_free
         var pathDifficulty = req.body.path_difficulty
-        if (pathId == null || (pathFree !== true && pathFree !== false) || pathDifficulty == null) {
+        if (pathId === undefined || (pathFree !== true && pathFree !== false) || pathDifficulty === undefined) {
           se.sendStatus(400)
         }
-        var newPath = new Path({path_id: pathId, path_free: pathFree, path_difficulty: pathDifficulty, grips: []}, { versionKey: false })
+        var newPath = new Path({path_id: pathId, path_free: pathFree, path_difficulty: pathDifficulty, grips: []}, {versionKey: false})
+        var newGrips = req.body.grips
+        if (newGrips !== undefined) {
+          var error = false
+          for (var i = 0; newGrips[i]; ++i) {
+            if (newGrips[i].grip_id === undefined || newGrips[i].grip_data === undefined || (newGrips[i].grip_on !== true && newGrips[i].grip_on !== false)) {
+              error = true
+            }
+          }
+          if (error === true) {
+            se.sendStatus(400)
+            return
+          }
+          newPath.grips = newGrips
+        }
         newPath.save()
         se.sendStatus(200)
       }
