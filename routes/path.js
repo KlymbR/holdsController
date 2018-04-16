@@ -22,7 +22,7 @@ router.get('', function (req, se) {
 
 // get a path with his id
 router.get('/path', function (req, se) {
-  Path.findOne({path_id: req.query.id}, (err, res) => {
+  Path.findOne({path_id: req.query.path_id}, (err, res) => {
     if (err) {
       console.log(err)
       se.status(500).send(err)
