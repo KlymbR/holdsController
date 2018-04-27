@@ -64,7 +64,7 @@
       "resolved": "https://registry.npmjs.org/compressible/-/compressible-2.0.12.tgz",
       "version": "2.0.12"
     },
-    "compression": "^1.7.1",
+    "compression": "^1.7.2",
     "connect-mongo": "^2.0.1",
     "content-disposition": {
       "integrity": "sha1-DPaLud318r55YcOoUXjLhdunjLQ=",
@@ -124,7 +124,7 @@
       "resolved": "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz",
       "version": "1.8.1"
     },
-    "express": "^4.16.2",
+    "express": "^4.16.3",
     "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
     "finalhandler": {
@@ -151,6 +151,7 @@
       "resolved": "https://registry.npmjs.org/fresh/-/fresh-0.5.2.tgz",
       "version": "0.5.2"
     },
+    "hoek": "^5.0.3",
     "http-errors": {
       "dependencies": {
         "depd": {
@@ -194,7 +195,7 @@
       "resolved": "https://registry.npmjs.org/kareem/-/kareem-2.0.3.tgz",
       "version": "2.0.3"
     },
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.10",
     "lodash.get": {
       "integrity": "sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=",
       "resolved": "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz",
@@ -250,7 +251,7 @@
       "resolved": "https://registry.npmjs.org/mongodb-core/-/mongodb-core-3.0.2.tgz",
       "version": "3.0.2"
     },
-    "mongoose": "^5.0.10",
+    "mongoose": "^5.0.16",
     "mongoose-legacy-pluralize": {
       "integrity": "sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==",
       "resolved": "https://registry.npmjs.org/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz",
