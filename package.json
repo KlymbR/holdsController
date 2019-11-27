@@ -251,7 +251,7 @@
       "resolved": "https://registry.npmjs.org/mongodb-core/-/mongodb-core-3.0.2.tgz",
       "version": "3.0.2"
     },
-    "mongoose": "^5.0.16",
+    "mongoose": "^5.7.5",
     "mongoose-legacy-pluralize": {
       "integrity": "sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==",
       "resolved": "https://registry.npmjs.org/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz",
