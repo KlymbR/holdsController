@@ -195,7 +195,7 @@
       "resolved": "https://registry.npmjs.org/kareem/-/kareem-2.0.3.tgz",
       "version": "2.0.3"
     },
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.19",
     "lodash.get": {
       "integrity": "sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=",
       "resolved": "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz",
